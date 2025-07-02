@@ -1,0 +1,181 @@
+xtopay-engine/
+├── packages/
+│   ├── core-engine/
+│   │   ├── src/
+│   │   │   ├── authorization/
+│   │   │   │   ├── card/
+│   │   │   │   │   ├── auth.ts
+│   │   │   │   │   ├── cvv-check.ts
+│   │   │   │   │   └── 3ds-handler.ts
+│   │   │   │   ├── mobile-money/
+│   │   │   │   │   ├── mm-auth.ts
+│   │   │   │   │   ├── session-manager.ts
+│   │   │   │   │   └── pin-validator.ts
+│   │   │   │   └── validator.ts
+│   │   │   ├── settlement/
+│   │   │   │   ├── reconciler.ts
+│   │   │   │   └── gh/
+│   │   │   │       ├── ghipss-reconciler.ts
+│   │   │   │       ├── momo-settlement.ts
+│   │   │   │       ├── visa-mc-settlement.ts
+│   │   │   │       ├── ghlink-processor.ts
+│   │   │   │       └── ezwich-settlement.ts
+│   │   │   ├── routing/
+│   │   │   │   ├── cost-optimizer.ts
+│   │   │   │   ├── success-tracker.ts
+│   │   │   │   ├── fallback-router.ts
+│   │   │   │   └── gh-routing-strategy.ts
+│   │   │   ├── shared/
+│   │   │   │   ├── types/
+│   │   │   │   │   ├── transaction.ts
+│   │   │   │   │   ├── merchant.ts
+│   │   │   │   │   ├── enums.ts
+│   │   │   │   │   └── payment-method.ts
+│   │   │   │   └── utils/
+│   │   │   │       ├── currency.ts
+│   │   │   │       ├── timestamp.ts
+│   │   │   │       └── retry.ts
+│   │   │   └── index.ts
+│   │   └── tests/
+│   │       ├── routing.test.ts
+│   │       ├── settlement.test.ts
+│   │       └── auth.test.ts
+│   ├── connectors/
+│   │   ├── src/
+│   │   │   ├── mobile-money/
+│   │   │   │   ├── mtn/
+│   │   │   │   │   ├── mtn-client.ts
+│   │   │   │   │   ├── mtn-config.ts
+│   │   │   │   │   └── mtn-status.ts
+│   │   │   │   ├── vodafone/
+│   │   │   │   │   ├── vodafone-api.ts
+│   │   │   │   │   └── vodafone-session.ts
+│   │   │   │   └── airteltigo/
+│   │   │   │       ├── airtel-api.ts
+│   │   │   │       └── airtel-hooks.ts
+│   │   │   ├── cards/
+│   │   │   │   ├── visa/
+│   │   │   │   │   ├── visa-gateway.ts
+│   │   │   │   │   └── visa-mapper.ts
+│   │   │   │   ├── mastercard/
+│   │   │   │   │   ├── mc-gateway.ts
+│   │   │   │   │   └── mc-mapper.ts
+│   │   │   │   └── gh-link/
+│   │   │   │       ├── ghlink-adapter.ts
+│   │   │   │       └── ghlink-utils.ts
+│   │   │   ├── bank/
+│   │   │   │   ├── absa/
+│   │   │   │   │   ├── absa-transfer.ts
+│   │   │   │   │   └── absa-validator.ts
+│   │   │   │   └── ghipss/
+│   │   │   │       ├── ghipss-api.ts
+│   │   │   │       └── ghipss-checks.ts
+│   │   │   ├── local-wallets/
+│   │   │   │   ├── gmoney/
+│   │   │   │   │   ├── gmoney-api.ts
+│   │   │   │   │   └── gmoney-hooks.ts
+│   │   │   │   ├── hubtel/
+│   │   │   │   │   ├── hubtel-gateway.ts
+│   │   │   │   │   └── hubtel-utils.ts
+│   │   │   │   └── zeepay/
+│   │   │   │       ├── zeepay-client.ts
+│   │   │   │       └── zeepay-hooks.ts
+│   │   │   └── ezwich/
+│   │   │       ├── ezwich-api.ts
+│   │   │       └── ezwich-auth.ts
+│   ├── risk/
+│   │   ├── src/
+│   │   │   ├── fraud-detection/
+│   │   │   │   ├── analyzer.ts
+│   │   │   │   └── patterns.ts
+│   │   │   ├── velocity-checks/
+│   │   │   │   ├── limit-checker.ts
+│   │   │   │   └── rate-limit.ts
+│   │   │   └── rule-engine/
+│   │   │       ├── rule.ts
+│   │   │       ├── engine.ts
+│   │   │       └── gh-local-rules.ts
+│   ├── api-adapters/
+│   │   ├── src/
+│   │   │   ├── merchant-api/
+│   │   │   │   ├── routes/
+│   │   │   │   │   └── transactions.ts
+│   │   │   │   ├── controllers/
+│   │   │   │   │   └── merchant.controller.ts
+│   │   │   │   ├── validators/
+│   │   │   │   │   └── transaction.validator.ts
+│   │   │   │   └── dto/
+│   │   │   │       ├── transaction.dto.ts
+│   │   │   │       └── merchant.dto.ts
+│   │   │   ├── admin-api/
+│   │   │   │   ├── routes.ts
+│   │   │   │   └── admin.controller.ts
+│   │   │   └── client-api/
+│   │   │       ├── routes.ts
+│   │   │       └── client.controller.ts
+│   ├── shared/
+│   │   ├── protos/
+│   │   │   ├── transaction.proto
+│   │   │   └── notification.proto
+│   │   ├── config/
+│   │   │   ├── env.ts
+│   │   │   ├── flags.ts
+│   │   │   └── region-config.ts
+│   │   ├── instrumentation/
+│   │   │   ├── logger.ts
+│   │   │   ├── metrics.ts
+│   │   │   └── tracer.ts
+│   │   └── messaging/
+│   │       ├── events/
+│   │       │   ├── transaction.events.ts
+│   │       │   └── fraud.events.ts
+│   │       ├── producers/
+│   │       │   └── tx-producer.ts
+│   │       └── consumers/
+│   │           └── fraud-consumer.ts
+├── services/
+│   ├── transaction-service/
+│   │   ├── src/
+│   │   │   ├── handlers/
+│   │   │   │   └── tx-handler.ts
+│   │   │   ├── worker.ts
+│   │   │   └── main.ts
+│   ├── reconciliation-service/
+│   │   ├── src/
+│   │   │   ├── scheduler.ts
+│   │   │   ├── engine.ts
+│   │   │   └── main.ts
+│   └── notification-service/
+│       ├── src/
+│       │   ├── webhook.ts
+│       │   ├── mailer.ts
+│       │   ├── sms.ts
+│       │   └── main.ts
+├── infrastructure/
+│   ├── gateway/
+│   │   ├── openapi.yaml
+│   │   └── nginx.conf
+│   ├── regional/
+│   │   └── gh/
+│   │       ├── momo-providers.json
+│   │       ├── wallet-schemes.json
+│   │       ├── banks.json
+│   │       ├── cards.json
+│   │       ├── switches.json
+│   │       └── providers.ts
+│   └── monitoring/
+│       ├── grafana/
+│       │   └── dashboards.json
+│       └── prometheus.yml
+├── scripts/
+│   ├── migrations/
+│   │   ├── 001-init.sql
+│   │   ├── 002-risk-schema.sql
+│   │   ├── 003-settlement-schema.sql
+│   └── provisioning/
+│       ├── deploy.sh
+│       └── terraform/
+│           ├── main.tf
+│           ├── variables.tf
+│           └── outputs.tf
+└── README.md
