@@ -1,4 +1,4 @@
-```md
+
 # 🔐 Security Policy for Xtopay Engine
 
 Maintained by **Xtottel Technologies Ltd**
@@ -69,7 +69,6 @@ Please act in good faith:
 
 We are open to ethical researchers, white-hat hackers, and developer collaborators.
 
----
 
 ## ❤️ Thanks
 
