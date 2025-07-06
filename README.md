@@ -1,7 +1,7 @@
 
 # Xtopay Engine: High-Performance Payment Processing for Ghana 🇬🇭
 
-![Xtopay Engine](https://img.shields.io/badge/Xtopay%20Engine-High%20Performance%20Payment%20Processing-brightgreen) ![GitHub Releases](https://img.shields.io/badge/releases-latest-blue) [![Visit Releases](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-orange)](https://github.com/TechEntrance/Xtopay-Engine/releases)
+![Xtopay Engine](https://img.shields.io/badge/Xtopay%20Engine-High%20Performance%20Payment%20Processing-brightgreen) ![GitHub Releases](https://img.shields.io/badge/releases-latest-blue) [![Visit Releases](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-orange)](https://github.com/Xtottel/Xtopay-Engine/releases)
 
 > 🚀 **Built for developers and businesses handling modern payments in Ghana.**
 
@@ -70,7 +70,7 @@ xtopay-engine/
 
 ## 🚀 Getting Started
 
-You can get started quickly by downloading the latest release from the [Releases section](https://github.com/TechEntrance/Xtopay-Engine/releases).
+You can get started quickly by downloading the latest release from the [Releases section](https://github.com/Xtottel/Xtopay-Engine/releases).
 
 ### 📦 Prerequisites
 
@@ -86,7 +86,7 @@ You can get started quickly by downloading the latest release from the [Releases
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/TechEntrance/Xtopay-Engine.git && cd Xtopay-Engine
+git clone https://github.com/Xtottel/Xtopay-Engine.git && cd Xtopay-Engine
 
 # 2. Install dependencies
 pnpm install
@@ -183,9 +183,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 📬 Support
 
-* Open an [issue](https://github.com/TechEntrance/Xtopay-Engine/issues)
+* Open an [issue](https://github.com/Xtottel/Xtopay-Engine/issues)
 * Email: `support@xtopay.co`
-* Docs: [https://docs.xtopay.co](https://docs.xtopay.co)
+* Docs: [https://docs.xtopay.co](https://xtopay.co/developers)
 
 ---
 
