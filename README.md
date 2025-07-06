@@ -1,181 +1,194 @@
-## 📘 `xtopay-engine`
 
-**Xtopay Engine** is a modular, high-performance payment processing engine tailored for Ghanaian payment infrastructure. It supports Mobile Money, card payments, bank transfers, local wallet schemes, and national switches.
+# Xtopay Engine: High-Performance Payment Processing for Ghana 🇬🇭
 
----
+![Xtopay Engine](https://img.shields.io/badge/Xtopay%20Engine-High%20Performance%20Payment%20Processing-brightgreen) ![GitHub Releases](https://img.shields.io/badge/releases-latest-blue) [![Visit Releases](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-orange)](https://github.com/TechEntrance/Xtopay-Engine/releases)
 
-### 🚀 Core Features
-
-* 🇬🇭 **Ghana-first integrations**
-
-  * MTN, Vodafone, AirtelTigo (MoMo)
-  * GhIPSS, Gh-Link, Ezwich
-  * Visa, MasterCard
-  * Absa, G-Money, Hubtel, Zeepay
-* 🔌 Pluggable payment connectors
-* 📤 Smart routing & fallback strategies
-* 💸 Reconciliation & settlement handling
-* ⚠️ Risk & fraud detection engine
-* 📡 Notification + event system (SMS, email, webhooks)
-* 📊 Logging, metrics, tracing (Prometheus + Grafana)
+> 🚀 **Built for developers and businesses handling modern payments in Ghana.**
 
 ---
 
-### 🧱 Monorepo Structure
+## 📚 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
+
+---
+
+## 📖 Overview
+
+**Xtopay Engine** is a modular, high-performance payment processing engine tailored for the Ghanaian market. It supports seamless integration with Mobile Money providers, banks, cards, and wallet schemes — making it ideal for fintechs, startups, merchants, and payment service providers operating in West Africa.
+
+---
+
+## 🔧 Features
+
+- ✅ **Modular Architecture**: Add or remove integrations without breaking the engine
+- ⚡ **High Performance**: Optimized for real-time transactions at scale
+- 💳 **Comprehensive Payment Support**:
+  - Mobile Money (MTN, Vodafone, AirtelTigo)
+  - Card Payments (Visa, MasterCard, Gh-Link)
+  - Bank Transfers (Absa, GCB, Stanbic)
+  - Wallets (G-Money, Zeepay, Hubtel)
+- 🔒 **Security by Design**:
+  - PCI DSS and ISO 27001-ready components
+  - Tokenization, key rotation, and encrypted channels
+- 🔌 **Pluggable Connectors**: Easily add support for new channels or fallback providers
+- 📡 **Notification System**: SMS, email, and webhook dispatch support
+- 📊 **Monitoring & Tracing**: Supports OpenTelemetry, Prometheus, Grafana dashboards
+
+---
+
+## 🧱 Architecture Overview
 
 ```
+
 xtopay-engine/
-├── packages/         # Core modules
-│   ├── core-engine/      # Routing, auth, settlement
-│   ├── connectors/       # MoMo, cards, banks, wallets
-│   ├── risk/             # Fraud detection & rules
-│   ├── api-adapters/     # APIs for merchant, admin, client
-│   ├── shared/           # Common types, config, logs, events
-├── services/         # Microservices
+├── packages/         # Core logic
+│   ├── core-engine/      # Authorization, routing, settlement
+│   ├── connectors/       # Momo, Card, Bank, Wallet handlers
+│   ├── api-adapters/     # REST APIs (merchant, dashboard, admin)
+│   ├── risk/             # Rules, fraud detection, scoring
+│   ├── shared/           # Common config, types, utils
+├── services/         # Independent microservices
 │   ├── transaction-service/
 │   ├── reconciliation-service/
 │   └── notification-service/
-├── infrastructure/   # Gateway, configs, monitoring
-├── scripts/          # Migrations, deploy scripts
-└── README.md
-```
+├── infrastructure/   # Deployment, gateway, observability
+└── scripts/          # Provisioning, deployment, seeding
+
+````
 
 ---
 
-### 🛠️ Getting Started
+## 🚀 Getting Started
 
-#### 📦 Prerequisites
+You can get started quickly by downloading the latest release from the [Releases section](https://github.com/TechEntrance/Xtopay-Engine/releases).
 
-* Node.js `>=18`
-* Yarn or PNPM
-* PostgreSQL
-* Redis
-* Docker (optional, for local services)
+### 📦 Prerequisites
 
-#### 🚀 Local Setup
+- Node.js `>=18`
+- PostgreSQL
+- Redis
+- Yarn or PNPM
+- Docker (optional for running microservices locally)
+
+---
+
+## ⚙️ Installation
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/xtottel/xtopay-engine.git && cd xtopay-engine
+git clone https://github.com/TechEntrance/Xtopay-Engine.git && cd Xtopay-Engine
 
 # 2. Install dependencies
 pnpm install
 
-# 3. Setup environment
+# 3. Setup environment variables
 cp .env.example .env
-# Update credentials and API keys for test environments
+# Fill in credentials for Momo, Card, Bank APIs, etc.
 
-# 4. Run services
+# 4. Start the development server
 pnpm dev
+````
+
+---
+
+## 💡 Usage Examples
+
+### Mobile Money
+
+```js
+const xtopay = require('xtopay-engine');
+
+xtopay.mobileMoney({
+  amount: 100,
+  phoneNumber: '024XXXXXXX',
+  channel: 'mtn-gh'
+})
+.then(console.log)
+.catch(console.error);
+```
+
+### Card Payments
+
+```js
+xtopay.cardPayment({
+  cardNumber: '1234 5678 9012 3456',
+  expiryDate: '12/25',
+  cvv: '123',
+  amount: 50,
+});
+```
+
+### Bank Transfers
+
+```js
+xtopay.bankTransfer({
+  bankAccount: '123456789',
+  amount: 200,
+});
 ```
 
 ---
 
-### 📁 Key Modules
+## 📘 API Reference
 
-| Module         | Purpose                                           |
-| -------------- | ------------------------------------------------- |
-| `core-engine`  | Handles authorization, routing, settlement        |
-| `connectors`   | Integrations for MoMo, GhIPSS, Absa, Visa, etc.   |
-| `risk`         | Velocity checks, fraud detection, rules           |
-| `api-adapters` | REST interfaces for dashboard & partners          |
-| `shared`       | Common types, telemetry, messaging                |
-| `services`     | Transaction, reconciliation, notification workers |
+### `/api/mobile-money`
+
+* **Method**: POST
+* **Params**: `amount`, `phoneNumber`, `channel`
+
+### `/api/card-payment`
+
+* **Method**: POST
+* **Params**: `cardNumber`, `expiryDate`, `cvv`, `amount`
+
+### `/api/bank-transfer`
+
+* **Method**: POST
+* **Params**: `bankAccount`, `amount`
+
+✅ Responses are standardized in JSON with `status`, `transaction_id`, and `metadata`.
 
 ---
 
-### 🧪 Testing
+## 🤝 Contributing
 
-```bash
-# Run unit tests
-pnpm test
+We welcome contributors!
 
-# Run specific service test
-pnpm --filter transaction-service test
+1. Fork the repo
+2. Create a branch: `git checkout -b feat/your-feature-name`
+3. Add your changes
+4. Lint + test: `pnpm lint && pnpm test`
+5. Open a Pull Request
+
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for full details.
+
+---
+
+## ⚖️ License
+
+This project is licensed under the [MIT License](LICENSE).
+**Attribution is required** — derived or forked versions must retain credit to the original authors at Xtottel Technologies Ltd.
+
+---
+
+## 📬 Support
+
+* Open an [issue](https://github.com/TechEntrance/Xtopay-Engine/issues)
+* Email: `support@xtopay.co`
+* Docs: [https://docs.xtopay.co](https://docs.xtopay.co)
+
+---
+
+> © 2025 Xtottel Technologies Ltd. Built proudly in Ghana 🇬🇭.
+
 ```
-
----
-
-### 📡 Monitoring & Instrumentation
-
-* `Prometheus` for metrics
-* `Grafana` dashboards under `/infrastructure/monitoring/grafana/`
-* `OpenTelemetry` ready in `shared/instrumentation`
-
----
-
-### 📤 Deployment
-
-Provisioning is automated via:
-
-* `scripts/provisioning/terraform/`
-* `scripts/deploy.sh` (customizable)
-
-You can target:
-
-* AWS (ECS/Fargate)
-* Railway
-* GCP (Cloud Run)
-* Render (for small scale)
-
----
-
-### 👥 Contributing
-
-We welcome contributions!
-
-```bash
-# Create a feature branch
-git checkout -b feat/add-ghipss-logs
-
-# Commit changes
-git commit -m "feat: add transaction logging for ghipss"
-
-# Push and open PR
-git push origin feat/add-ghipss-logs
-```
-
-Make sure your code:
-
-* Passes lint checks: `pnpm lint`
-* Includes unit or integration tests
-* Uses types and shared utilities from `packages/shared`
-
----
-
-### 🧩 Environment Variables
-
-```env
-DATABASE_URL=
-REDIS_URL=
-MTN_API_KEY=
-VODAFONE_SECRET=
-VISA_PUBLIC_KEY=
-HUBTEL_CLIENT_ID=
-GHPASS_SIGNING_KEY=
-REGION=gh
-```
-
-See `.env.example` for the full list.
-
----
-
-### 🧠 Roadmap
-
-* [x] Ghana-only payment engine (MoMo, cards, wallets)
-* [ ] Add international fallback (Stripe, Paystack)
-* [ ] Multi-currency FX routing
-* [ ] Full PCI DSS scope (for card tokenization)
-* [ ] ISO 27001-aligned audit system
-
----
-
-### 📬 Contact
-
-For questions, integrations, or partnership requests:
-
-> **Collins Joe** — CEO, Xtottel Technologies
-> 📩 `collins@xtottel.com`
-> 🌐 [xtopay.co](https://xtopay.co)
-
----
